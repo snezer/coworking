@@ -1,6 +1,7 @@
 ﻿using Coworking.FileConverter.Interfaces;
 using Coworking.FileConverter.Models;
-using Coworking.FileConverter.Models.Settings;
+using Settings = Coworking.FileConverter.Models.Settings;
+using GroupDocs.Conversion;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Globalization;
@@ -17,22 +18,38 @@ namespace Coworking.FileConverter
     public class SvgConverter : ISvgConverter
     {
         private readonly ILogger<SvgConverter> _logger;
-        private readonly ConverterSettings? _settings;
+        private readonly Settings.ConverterSettings? _settings;
 
-        public SvgConverter(ConverterSettings settings, ILogger<SvgConverter> logger)
+        public SvgConverter(Settings.ConverterSettings settings, ILogger<SvgConverter> logger)
         {
             _logger = logger;
             _settings = settings;
         }
 
-        public FileConvertResultDTO Convert(ConvertRequestDTO requestDTO)
+        public async Task<FileConvertResultDTO> Convert(ConvertRequestDTO requestDTO)
         {
             var tempMetadata = GenFileMetadata(_settings);
 
-            FluentConverter.Load().ConvertTo().Convert();            
+            using (Stream fileStream = new FileStream(tempMetadata.FileInFullPath, FileMode.Create))
+            {
+                await requestDTO.FloorLauoutContext.CopyToAsync(fileStream);
+            }
+
+            FluentConverter.Load(tempMetadata.FileInFullPath).ConvertTo(tempMetadata.FileOutFullPath).Convert();
+
+            return new FileConvertResultDTO
+            {
+                FloorId = requestDTO.FloorId,
+                FloorLayoutContent = await LoaadSVG(tempMetadata.FileOutFullPath)
+            };
         }
 
-        TempFileMetadata GenFileMetadata(ConverterSettings? settings)
+        async Task<string> LoaadSVG(string filePath)
+        {
+            return System.Convert.ToBase64String(await File.ReadAllBytesAsync(filePath));
+        }
+
+        TempFileMetadata GenFileMetadata(Settings.ConverterSettings? settings)
         {
 
             var dirInfoIn = new DirectoryInfo(settings.IncomingTempStoragePath);
@@ -45,8 +62,8 @@ namespace Coworking.FileConverter
 
             TempFileMetadata? result = new()
             {
-                FileInFullPath = settings.IncomingTempStoragePath + $"in_file_{Guid.NewGuid()}.png",
-                FileOutFullPath = settings.OutgoingTempStoragePath + $"out_file_{Guid.NewGuid()}.svg"
+                FileInFullPath = Path.Combine(settings.IncomingTempStoragePath, $"in_file_{Guid.NewGuid()}.png"),
+                FileOutFullPath = Path.Combine(settings.OutgoingTempStoragePath, $"out_file_{Guid.NewGuid()}.svg")
             };
 
             return result;

@@ -1,4 +1,5 @@
 ﻿using Coworking.FileConverter;
+using Coworking.FileConverter.Interfaces;
 using Coworking.FileConverter.Models;
 using Coworking.Models;
 using Microsoft.AspNetCore.Components.Forms;
@@ -11,17 +12,20 @@ namespace Coworking.Controllers
     public class ConverterController : ControllerBase
     {
         private readonly ILogger<ConverterController> _logger;
+        private readonly ISvgConverter _svgConverter;
 
-        public ConverterController(ILogger<ConverterController> logger)
+        public ConverterController(ISvgConverter converter, ILogger<ConverterController> logger)
         {
             _logger = logger;
+            _svgConverter = converter;
         }
 
         [HttpPost]
         [Route("PngSvgComnvertFile")]
-        public IActionResult PngSvgComnvertFile(ConvertRequestDTO request)
+        [ProducesResponseType(typeof(FileConvertResultDTO), 200)]
+        public async Task<ActionResult<FileConvertResultDTO>> PngSvgComnvertFile(ConvertRequestDTO request)
         {
-            if (filePath == null)
+            if (request.FloorLauoutContext == null)
             {
                 _logger.LogInformation("Файл не был передан в метод.");
                 return StatusCode(400, "Файл не был передан в метод.");
@@ -30,9 +34,9 @@ namespace Coworking.Controllers
             try
             {
 
-                
+                var result = await _svgConverter.Convert(request);
 
-                return Ok();
+                return Ok(result);
             }
             catch (Exception err)
             {

@@ -9,6 +9,6 @@ namespace Coworking.FileConverter.Interfaces
 {
     public interface ISvgConverter
     {
-        FileConvertResultDTO Convert(ConvertRequestDTO requestDTO);
+        Task<FileConvertResultDTO> Convert(ConvertRequestDTO requestDTO);
     }
 }

@@ -15,6 +15,8 @@ using System.Text;
 using Coworking.Core.DA.Extentions;
 using Coworking.Extentions;
 using Coworking.FileConverter.Models.Settings;
+using Coworking.FileConverter.Interfaces;
+using Coworking.FileConverter;
 
 
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -69,6 +71,7 @@ services.AddAuthorization(options =>
 });
 
 services.AddScoped<ClaimsLoader>();
+services.AddSingleton<ISvgConverter, SvgConverter>();
 
 services.Configure<JwtSettings>(config.GetSection("JwtSettings"));
 services.Configure<JwtBearerOptions>(IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
