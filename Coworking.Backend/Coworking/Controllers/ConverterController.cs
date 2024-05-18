@@ -14,6 +14,8 @@ namespace Coworking.Controllers
         private readonly ILogger<ConverterController> _logger;
         private readonly ISvgConverter _svgConverter;
 
+        string[] validPngFileExtensions = new string[] { ".png" };
+
         public ConverterController(ISvgConverter converter, ILogger<ConverterController> logger)
         {
             _logger = logger;
@@ -23,12 +25,18 @@ namespace Coworking.Controllers
         [HttpPost]
         [Route("PngSvgComnvertFile")]
         [ProducesResponseType(typeof(FileConvertResultDTO), 200)]
-        public async Task<ActionResult<FileConvertResultDTO>> PngSvgComnvertFile(ConvertRequestDTO request)
+        public async Task<ActionResult<FileConvertResultDTO>> PngSvgComnvertFile([FromForm] ConvertRequestDTO request)
         {
             if (request.FloorLauoutContext == null)
             {
                 _logger.LogInformation("Файл не был передан в метод.");
                 return StatusCode(400, "Файл не был передан в метод.");
+            }
+
+            if (!validPngFileExtensions.Any(x => request.FloorLauoutContext.FileName.EndsWith(x)))
+            {
+                _logger.LogInformation("Формат файла не поддерживается. Требуется формат .pmg");
+                return StatusCode(400, "Формат файла не поддерживается. Требуется формат .png");
             }
 
             try

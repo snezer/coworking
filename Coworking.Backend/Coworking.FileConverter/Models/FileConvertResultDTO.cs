@@ -10,5 +10,6 @@ namespace Coworking.FileConverter.Models
     {
         public int FloorId { get; set; }
         public string? FloorLayoutContent { get; set; }
+        public string? ContentType {  get; set; }
     }
 }

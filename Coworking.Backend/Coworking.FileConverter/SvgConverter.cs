@@ -40,7 +40,8 @@ namespace Coworking.FileConverter
             return new FileConvertResultDTO
             {
                 FloorId = requestDTO.FloorId,
-                FloorLayoutContent = await LoaadSVG(tempMetadata.FileOutFullPath)
+                FloorLayoutContent = await LoaadSVG(tempMetadata.FileOutFullPath),
+                ContentType = "base64"
             };
         }
 
