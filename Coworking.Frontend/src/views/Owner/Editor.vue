@@ -37,5 +37,7 @@ import EditorWorkElement from "../../components/Editor/EditorWorkElement.vue";
 </template>
 
 <style scoped>
-
+.level{
+  display: flex;
+}
 </style>

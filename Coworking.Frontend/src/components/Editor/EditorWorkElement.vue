@@ -23,58 +23,104 @@ const modes = ref([
 
 const homeElement = ref([
   {
-    title: 'Комната',
+    title: 'Тихая зона',
     icon: 'room.svg',
-    value: 'room'
+    value: 'silenceplace'
   },
   {
-    title: 'Стеллаж',
+    title: 'Рабочая зона',
     icon: 'rack.svg',
-    value: 'rack'
+    value: 'workplace'
   },
   {
-    title: 'Кафедра',
+    title: 'Мягкая зона',
     icon: 'chair.svg',
-    value: 'chair'
+    value: 'softplace'
   },
   {
-    title: 'Место для чтения',
+    title: 'Зона администрации',
     icon: 'placeforread.svg',
-    value: 'placeforread'
+    value: 'adminplace'
   },
   {
-    title: 'Диван',
+    title: 'Фудкорд',
     icon: 'sofa.svg',
-    value: 'sofa'
+    value: 'foodplace'
   },
   {
-    title: 'Стол с ПК',
+    title: 'Прочее',
     icon: 'pc.svg',
-    value: 'pc'
-  },
-  {
-    title: 'МФУ',
-    icon: 'mfu.svg',
-    value: 'mfu'
-  },
+    value: 'otherplace'
+  }
 ])
 
 const nodeElements = ref([
   {
-    title: 'Дверь',
-    icon: 'door.svg',
-    value: 'door'
+    title: 'Стол',
+    icon: 'table.svg',
+    value: 'table'
   },
   {
-    title: 'Лестница',
-    icon: 'stair.svg',
-    value: 'stair'
+    title: 'Принтер',
+    icon: 'printer.svg',
+    value: 'printer'
   },
   {
-    title: 'Лифт',
-    icon: 'elevator.svg',
-    value: 'elevator'
-  }
+    title: 'Колонки',
+    icon: 'audio2.svg',
+    value: 'audio2'
+  },
+  {
+    title: 'Колонки большие',
+    icon: 'audioall.svg',
+    value: 'audioall'
+  },
+  {
+    title: 'Кресло',
+    icon: 'chair.svg',
+    value: 'chair'
+  },
+  {
+    title: 'Кофемашина',
+    icon: 'coffeeemachine.svg',
+    value: 'coffeeemachine'
+  },
+  {
+    title: 'Компьютер',
+    icon: 'computer.svg',
+    value: 'computer'
+  },{
+    title: 'Куллер',
+    icon: 'cooler.svg',
+    value: 'cooler'
+  },{
+    title: 'Холодильник',
+    icon: 'fridge.svg',
+    value: 'fridge'
+  },{
+    title: 'Ресепшен',
+    icon: 'reception.svg',
+    value: 'reception'
+  },{
+    title: 'Круглый стол',
+    icon: 'round.svg',
+    value: 'round'
+  },
+  {
+    title: 'Чайник',
+    icon: 'teaport1.svg',
+    value: 'teaport1'
+  },
+  {
+    title: 'Туалет',
+    icon: 'toilet.svg',
+    value: 'toilet'
+  },
+  {
+    title: 'Телевизор',
+    icon: 'tv.svg',
+    value: 'tv'
+  },
 ])
 
 </script>

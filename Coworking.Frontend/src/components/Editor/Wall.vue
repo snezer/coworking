@@ -60,6 +60,31 @@ const selectRoom = (e) => {
 
 }
 
+const colorFill = computed(() => {
+  let color = ''
+  switch (props.data?.type){
+    case 'silenceplace' :
+      color = '#339542'
+      break;
+    case 'workplace' :
+      color = '#2867B0'
+      break;
+    case 'softplace' :
+      color = '#835615'
+      break;
+    case 'adminplace' :
+      color = '#CA2D2D'
+      break;
+    case 'foodplace' :
+      color = '#D48931'
+      break;
+    case 'otherplace' :
+      color = '#848387'
+      break;
+  }
+  return color
+})
+
 </script>
 
 <template>
@@ -69,11 +94,11 @@ const selectRoom = (e) => {
         :y="data?.positionStart.y"
         :width="data?.size?.width"
         :height="data?.size?.height"
-        :stroke="selectedRoom"
+        :stroke="colorFill"
         stroke-width="2"
         stroke-dasharray="10"
-        :fill="colorFiil"
-        fill-opacity=".4"
+        :fill="colorFill"
+        fill-opacity=".1"
     />
     <foreignObject  :x="data?.positionStart.x"
                     :y="data?.positionStart.y">

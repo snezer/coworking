@@ -55,14 +55,12 @@ const onClick = function (e) {
   //если стоит галка рисования то рисуем объекты
   if (drawHomeElement.value){
     switch (drawTypeElement.value) {
-      case 'room' :
-      case 'wall' :
-      case 'rack' :
-      case 'chair' :
-      case 'placeforread' :
-      case 'sofa' :
-      case 'pc' :
-      case 'mfu' :
+      case 'silenceplace' :
+      case 'workplace' :
+      case 'softplace' :
+      case 'adminplace' :
+      case 'foodplace' :
+      case 'otherplace' :
       {
         switch (stageDrawHomeElement.value) {
           case 'start' :
@@ -90,11 +88,24 @@ const onClick = function (e) {
             stageDrawHomeElement.value = 'start'
 
         }
-        break
+        break;
       }
       case 'door' :
       case 'stair' :
-      case 'elevator' : {
+      case 'audio2' :
+      case 'audioall' :
+      case 'chair' :
+      case 'coffeemachine' :
+      case 'computer' :
+      case 'cooler' :
+      case 'fridge' :
+      case 'printer' :
+      case 'reception' :
+      case 'round' :
+      case 'table' :
+      case 'teaport1' :
+      case 'toilet' :
+      case 'tv' : {
         editorStore.add_node({
           positionStart: {
             x: x,
@@ -117,6 +128,7 @@ const selectFloor = () => {
 
 onMounted(() => {
   editorStore.get_all_home_elements()
+  editorStore.get_all_nodes()
 })
 </script>
 
@@ -138,8 +150,6 @@ onMounted(() => {
 
         <HomeElemtnWrapper />
         <HomeElement
-
-
             v-show="stageDrawHomeElement!=='start'"
             :data="newHomeElement"
         />

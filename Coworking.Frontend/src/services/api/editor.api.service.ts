@@ -86,7 +86,8 @@ class EditorApiService extends RestService<any>{
                 y: data.positionStart.y
             },
             type: data.type,
-        }, 'entity/'+data.floor,)
+            levelId: data.floor
+        }, 'entity',)
     }
     async deleteNode(id){
         return await editorService.delete('entity/'+id)

@@ -16,7 +16,7 @@ const homeElementsByFloor = computed(() => {
 
 <template>
   <g>
-    <HomeElement v-for="element in homeElementsByFloor"
+    <HomeElement v-if="homeElementsByFloor.length>0" v-for="element in homeElementsByFloor"
                   :data="element"
                   :key="element?.id"
     />

@@ -119,7 +119,7 @@ export const useEditorStore = defineStore('editorStore', {
         },
         async get_all_nodes(){
             let nodes = await editorService.getAllNode(this.selectFloorId)
-            this.nodeElements = nodes.data
+            this.nodeElements = nodes
             //commit('SAVE_NODES', nodes.data)
         },
         set_draw_mode_editor(){
