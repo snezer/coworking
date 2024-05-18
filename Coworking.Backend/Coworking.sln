@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coworking", "Coworking\Cowo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{E525CC6B-33FC-4909-B615-83518EA25F23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.DA", "Coworking.DA\Coworking.DA.csproj", "{7B8F8ED6-A301-4F5A-8E57-0D7074A4679F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coworking.DA", "Coworking.DA\Coworking.DA.csproj", "{7B8F8ED6-A301-4F5A-8E57-0D7074A4679F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.Core.DA", "Coworking.Core.DA\Coworking.Core.DA.csproj", "{1560FC1B-DEA6-4400-A640-07897EE3DEEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coworking.Core.DA", "Coworking.Core.DA\Coworking.Core.DA.csproj", "{1560FC1B-DEA6-4400-A640-07897EE3DEEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.DA.Models", "Coworking.DA.Models\Coworking.DA.Models.csproj", "{6005FB8B-B112-4966-B0E1-4C2A17A66204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coworking.DA.Models", "Coworking.DA.Models\Coworking.DA.Models.csproj", "{6005FB8B-B112-4966-B0E1-4C2A17A66204}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{702A0F99-3280-41A7-9A57-7956DD6A4260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coworking.FileConverter", "Coworking.FileConverter\Coworking.FileConverter.csproj", "{83E0B822-4602-44C8-8FC7-D5EB938C1637}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,10 @@ Global
 		{6005FB8B-B112-4966-B0E1-4C2A17A66204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6005FB8B-B112-4966-B0E1-4C2A17A66204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6005FB8B-B112-4966-B0E1-4C2A17A66204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83E0B822-4602-44C8-8FC7-D5EB938C1637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83E0B822-4602-44C8-8FC7-D5EB938C1637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83E0B822-4602-44C8-8FC7-D5EB938C1637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83E0B822-4602-44C8-8FC7-D5EB938C1637}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +51,7 @@ Global
 		{7B8F8ED6-A301-4F5A-8E57-0D7074A4679F} = {E525CC6B-33FC-4909-B615-83518EA25F23}
 		{1560FC1B-DEA6-4400-A640-07897EE3DEEA} = {E525CC6B-33FC-4909-B615-83518EA25F23}
 		{6005FB8B-B112-4966-B0E1-4C2A17A66204} = {E525CC6B-33FC-4909-B615-83518EA25F23}
+		{83E0B822-4602-44C8-8FC7-D5EB938C1637} = {702A0F99-3280-41A7-9A57-7956DD6A4260}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18126675-4967-4FB5-8905-A22397BCA8AF}

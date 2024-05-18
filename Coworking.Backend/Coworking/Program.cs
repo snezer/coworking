@@ -13,6 +13,8 @@ using Prometheus;
 using Serilog;
 using System.Text;
 using Coworking.Core.DA.Extentions;
+using Coworking.Extentions;
+using Coworking.FileConverter.Models.Settings;
 
 
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -35,6 +37,7 @@ string? connSection = config.GetConnectionString("DefaultConnection");
 services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connSection));
 services.AddHealthChecks().AddNpgSql(connSection).ForwardToPrometheus();
 services.AddInfrastructure(config);
+services.AddServiceOptions<ConverterSettings>(config, "ConverterSettings");
 
 
 services.AddDefaultIdentity<ApplicationUser>(options =>
@@ -123,10 +126,11 @@ using (var scope = app.Services.CreateScope())
 
     SeedHelper.SeedAthentication(userManager, roleManager);
 }
-
+app.UseRouting();
 app.MapControllers();
 
-var runTask = app.RunAsync(config["hostUrl"]);
+//var runTask = app.RunAsync(config["hostUrl"]);
+var runTask = app.RunAsync();
 
 //app.Run();
 app.EnsureMigrations(config.GetValue<bool>("UseManualMigrations"));
