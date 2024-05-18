@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 using Serilog;
+using Coworking.DA.Models;
 namespace Coworking.Core.DA
 {
     //public class ApplicationDbContext: DbContext, IPersistedGrantDbContext
@@ -40,6 +41,8 @@ namespace Coworking.Core.DA
 
             _logger = logger;
         }
+
+        public DbSet<FileConverterResult>? FileConverterResults { get; set; } = null;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

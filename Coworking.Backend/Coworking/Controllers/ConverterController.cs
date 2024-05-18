@@ -25,7 +25,7 @@ namespace Coworking.Controllers
         [HttpPost]
         [Route("PngSvgComnvertFile")]
         [ProducesResponseType(typeof(FileConvertResultDTO), 200)]
-        public async Task<ActionResult<FileConvertResultDTO>> PngSvgComnvertFile([FromForm] ConvertRequestDTO request)
+        public async Task<IActionResult> PngSvgComnvertFile([FromForm] ConvertRequestDTO request)
         {
             if (request.FloorLauoutContext == null)
             {
@@ -35,7 +35,7 @@ namespace Coworking.Controllers
 
             if (!validPngFileExtensions.Any(x => request.FloorLauoutContext.FileName.EndsWith(x)))
             {
-                _logger.LogInformation("Формат файла не поддерживается. Требуется формат .pmg");
+                _logger.LogInformation("Формат файла не поддерживается. Требуется формат .png");
                 return StatusCode(400, "Формат файла не поддерживается. Требуется формат .png");
             }
 
@@ -44,7 +44,9 @@ namespace Coworking.Controllers
 
                 var result = await _svgConverter.Convert(request);
 
-                return Ok(result);
+                //TODO: Сохраняем в базу
+
+                return Ok();
             }
             catch (Exception err)
             {
