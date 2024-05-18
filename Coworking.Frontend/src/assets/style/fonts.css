@@ -1,0 +1,99 @@
+@font-face {
+    font-family: "Montreal Regular";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/Montreal/NeueMontreal-Regular.otf");
+}
+
+@font-face {
+    font-family: "Montreal Medium";
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/Montreal/NeueMontreal-Medium.otf");
+}
+@font-face {
+    font-family: "Montreal Medium Italic";
+    font-style: normal;
+    font-weight: 600;
+    src: url("fonts/Montreal/NeueMontreal-MediumItalic.otf");
+}
+
+@font-face {
+    font-family: "Montreal Light";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/Montreal/NeueMontreal-Light.otf");
+}
+
+@font-face {
+    font-family: "Montreal Light Italic";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/Montreal/NeueMontreal-LightItalic.otf");
+}
+
+@font-face {
+    font-family: "Montreal Italic";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/Montreal/NeueMontreal-Italic.otf");
+}
+
+
+@font-face {
+    font-family: "Montreal Bold";
+    font-style: normal;
+    font-weight: 800;
+    src: url("fonts/Montreal/NeueMontreal-Bold.otf");
+}
+@font-face {
+    font-family: "Montreal Bold Italic";
+    font-style: normal;
+    font-weight: 800;
+    src: url("fonts/Montreal/NeueMontreal-BoldItalic.otf");
+}
+
+@font-face {
+    font-family: "Neue Machina";
+    font-style: normal;
+    font-weight: 400;
+    src: url("fonts/PPNeueMachina-Regular.otf");
+}
+
+@font-face {
+    font-family: "Neue Machina Light";
+    font-style: normal;
+    font-weight: 300;
+    src: url("fonts/PPNeueMachina-Light.otf");
+}
+
+@font-face {
+    font-family: "Neue Machina Ultrabold";
+    font-style: normal;
+    font-weight: 900;
+    src: url("fonts/PPNeueMachina-Ultrabold.otf");
+}
+
+html{
+    font-size: 14px;
+}
+
+*{
+    font-family: 'Montreal Regular', sans-serif;
+}
+
+h1{
+    font-family: "Neue Machina Ultrabold", 'Arial', sans-serif;
+    font-size: 3.57rem;
+}
+.heading{
+    font-family: "Neue Machina Ultrabold", 'Arial', sans-serif;
+    font-size: 3.57rem;
+}
+
+.white-text{
+    color: white;
+}
+.red-text{
+    color: #ff4433;
+}
