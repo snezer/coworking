@@ -2,6 +2,7 @@
 using Coworking.Core.DA;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Coworking.Core.DA.Migrations
 {
     [DbContext(typeof(CoworkingDbContext))]
-    partial class CoworkingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240518135602_AddVectorConverterResult")]
+    partial class AddVectorConverterResult
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
