@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Coworking.Core.DA\Coworking.Core.DA.csproj" />
     <ProjectReference Include="..\Coworking.DA.Models\Coworking.DA.Models.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,12 @@
 ﻿using Coworking.Core.DA;
+using Coworking.Core.DA.Extentions;
 using Coworking.Core.DA.Settings;
+using Coworking.DA;
+using Coworking.DA.Interfaces;
+using Coworking.Extentions;
+using Coworking.FileConverter;
+using Coworking.FileConverter.Interfaces;
+using Coworking.FileConverter.Models.Settings;
 using Coworking.Infrastructure;
 using Coworking.Models;
 using IdentityModel;
@@ -12,11 +19,6 @@ using Microsoft.IdentityModel.Tokens;
 using Prometheus;
 using Serilog;
 using System.Text;
-using Coworking.Core.DA.Extentions;
-using Coworking.Extentions;
-using Coworking.FileConverter.Models.Settings;
-using Coworking.FileConverter.Interfaces;
-using Coworking.FileConverter;
 
 
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -72,6 +74,7 @@ services.AddAuthorization(options =>
 
 services.AddScoped<ClaimsLoader>();
 services.AddSingleton<ISvgConverter, SvgConverter>();
+services.AddScoped<IFileConverterResultRepository, FileConverterResultRepository>();
 
 services.Configure<JwtSettings>(config.GetSection("JwtSettings"));
 services.Configure<JwtBearerOptions>(IdentityServerJwtConstants.IdentityServerJwtBearerScheme,
