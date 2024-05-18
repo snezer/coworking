@@ -135,8 +135,8 @@ using (var scope = app.Services.CreateScope())
 app.UseRouting();
 app.MapControllers();
 
-//var runTask = app.RunAsync(config["hostUrl"]);
-var runTask = app.RunAsync();
+var runTask = app.RunAsync(config["hostUrl"]);
+//var runTask = app.RunAsync();
 
 //app.Run();
 app.EnsureMigrations(config.GetValue<bool>("UseManualMigrations"));

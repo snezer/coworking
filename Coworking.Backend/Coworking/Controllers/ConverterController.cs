@@ -1,4 +1,6 @@
-﻿using Coworking.FileConverter;
+﻿using Coworking.DA.Interfaces;
+using Coworking.DA.Models;
+using Coworking.FileConverter;
 using Coworking.FileConverter.Interfaces;
 using Coworking.FileConverter.Models;
 using Coworking.Models;
@@ -13,13 +15,15 @@ namespace Coworking.Controllers
     {
         private readonly ILogger<ConverterController> _logger;
         private readonly ISvgConverter _svgConverter;
+        private readonly IFileConverterResultRepository _converterResultRepository;
 
         string[] validPngFileExtensions = new string[] { ".png" };
 
-        public ConverterController(ISvgConverter converter, ILogger<ConverterController> logger)
+        public ConverterController(ISvgConverter converter, IFileConverterResultRepository converterResultRepository, ILogger<ConverterController> logger)
         {
             _logger = logger;
             _svgConverter = converter;
+            _converterResultRepository = converterResultRepository;
         }
 
         [HttpPost]
@@ -41,25 +45,33 @@ namespace Coworking.Controllers
 
             try
             {
-
                 var result = await _svgConverter.Convert(request);
 
                 //TODO: Сохраняем в базу
-
-                return Ok();
+                if (await _converterResultRepository.SaveConvertResult(new FileConverterResult 
+                {
+                    ContentType = result.ContentType,
+                    FloorId = result.FloorId,
+                    FloorLayoutContent = result.FloorLayoutContent
+                })) return Ok();
+                else 
+                    return NotFound();
             }
             catch (Exception err)
             {
                 _logger.LogError(err, $"Ошибка конвертации файла: {err.Message}");
-                return StatusCode(400, err);
+                return StatusCode(500, err);
             }
         }
 
         [HttpGet]
-        [Route("ping")]
-        public IActionResult Ping()
+        [Route("converted/file/{floorId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(FileConvertResultDTO))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetConvertionResultByFloorId(int floorId)
         {
-            return Ok(DateTime.Now);
+            var result = await _converterResultRepository.LoadConvertionResultByFloorId(floorId);
+            return result is null ? NotFound() : Ok(result);
         }
     }
 }
