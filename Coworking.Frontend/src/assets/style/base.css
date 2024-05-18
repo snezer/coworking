@@ -1,0 +1,22 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --primary: #535bf2;
+    --primary-light: #0078cd;
+    --primary-mid: #00528c;
+    --secondary: #f7dba7;
+    --secondary-light: #fceed5;
+    --secondary-mid: #f1d092;
+    --secondary-dark: #eec77e;
+
+    --text-gray: #8b9696;
+    --text-blue-dark: #002a48;
+
+    --background-gray: #e9eced;
+
+    --white: #fff;
+    --black: #000;
+    --dark: #1a1a1a;
+}
