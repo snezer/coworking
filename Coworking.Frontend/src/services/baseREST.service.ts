@@ -14,7 +14,7 @@ export class BaseService {
     }
 
     protected get apiEndpoint(): string {
-        return `/api/${this._versionApi}/${this._endpoint}`
+        return `/api/${this._versionApi.length > 0 ? `${this._versionApi}/` : ``}${this._endpoint}`
     }
 }
 

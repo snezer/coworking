@@ -18,6 +18,7 @@ const handleLogin = async () => {
   // if (authService.checkHasIsAuth()) {
   //   await router.push({ path: '/home' })
   // }
+  router.push({ path: '/dashboard/main' })
   isLoading.value = false
 }
 </script>
@@ -67,11 +68,6 @@ const handleLogin = async () => {
 
     </div>
   </div>
-  <div class="primary-block" :class="{'registration': registrationFormVisible}">
-    <Button @click="registrationFormVisible=!registrationFormVisible">
-      Регистрация
-    </Button>
-  </div>
 </template>
 
 <style scoped>
@@ -80,7 +76,8 @@ const handleLogin = async () => {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  align-content: center;
   overflow: hidden;
 }
 

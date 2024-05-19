@@ -126,17 +126,21 @@ const nodeElements = ref([
 </script>
 
 <template>
-  <div>
-    <div class="mode">
-      <SelectButton v-model="modeEditor" :options="modes" option-label="title" option-value="event" />
-    </div>
-    <div class="element">
-      <Dropdown v-model="drawTypeElement" :options="homeElement" placeholder="Элементы здания" option-label="title" option-value="value">
-      </Dropdown>
-      <Dropdown v-model="drawTypeElement" :options="nodeElements" placeholder="Интерьер" option-label="title" option-value="value">
-      </Dropdown>
+  <div style="display: flex; gap: 10px; flex-direction: column;">
+    <span>Редактор карты помещения</span>
+    <div style="display: flex; gap: 5px; align-items: center;">
+      <div class="mode">
+        <SelectButton v-model="modeEditor" :options="modes" option-label="title" option-value="event" />
+      </div>
+      <div class="element" style="display: flex; gap: 5px">
+        <Dropdown v-model="drawTypeElement" :options="homeElement" placeholder="Зоны" option-label="title" option-value="value">
+        </Dropdown>
+        <Dropdown v-model="drawTypeElement" :options="nodeElements" placeholder="Интерьер" option-label="title" option-value="value">
+        </Dropdown>
+      </div>
     </div>
   </div>
+
 </template>
 
 <style scoped>

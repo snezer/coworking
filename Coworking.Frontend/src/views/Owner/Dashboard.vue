@@ -7,7 +7,9 @@ import PageHeader from "../../components/Page/PageHeader.vue";
   <PageHeader>
     <template #header>
       <div>
-        header
+        <div class="name heading" style="font-size: 2rem; font-weight: 600; padding-left: 10px;">
+          Бизнес-Центр
+        </div>
       </div>
     </template>
     <template #content>

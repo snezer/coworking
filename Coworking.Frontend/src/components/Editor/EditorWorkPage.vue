@@ -130,6 +130,8 @@ onMounted(() => {
   editorStore.get_all_home_elements()
   editorStore.get_all_nodes()
 })
+
+import podl from'../../assets/image/podl.png'
 </script>
 
 <template>
@@ -138,10 +140,11 @@ onMounted(() => {
       <svg>
         <image
             style="opacity: 0.5; filter: invert(1)"
-            :href="'data:image/png;base64,' + selectFloor.image"
+            :href="podl"
             x="50"
-            y="60"
+            y="-50"
             width="1000"
+            height="1000"
         />
       </svg>
       <svg

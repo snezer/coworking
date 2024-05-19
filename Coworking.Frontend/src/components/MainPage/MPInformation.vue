@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+defineEmits(['openmap'])
 </script>
 
 <template>
@@ -12,7 +13,7 @@
         <nav>
           <ul>
             <li><a class="white-text" href="/">Главная</a></li>
-            <li><a class="white-text" href="/">Личный кабинет</a></li>
+            <li><a class="white-text" href="/login">Личный кабинет</a></li>
             <li><a href="/">О нас</a></li>
           </ul>
         </nav>
@@ -20,13 +21,13 @@
     </div>
     <div class="base">
       <div class="heading white-text">
-        Коворкинг
+        Выбираешь коворкинг?
       </div>
       <div class="description white-text">
         <span class="red-text">Хочешь поработать?</span> Мы знаем где можно...
       </div>
       <div class="actons">
-        <Button style="background: white; color: #535bf2;">
+        <Button style="background: white; color: #535bf2;" @click="$emit('openmap')">
           Выбрать место
         </Button>
       </div>

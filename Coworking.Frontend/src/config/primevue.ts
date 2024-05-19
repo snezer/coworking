@@ -1,5 +1,5 @@
 import PrimeVue from 'primevue/config'
-import 'primevue/resources/themes/saga-blue/theme.css'
+import 'primevue/resources/themes/md-light-indigo/theme.css'
 import 'primevue/resources/primevue.css'
 import  'primeicons/primeicons.css'
 
@@ -37,6 +37,7 @@ import ProgressBar from "primevue/progressbar";
 import Menubar from "primevue/menubar";
 import AutoComplete from "primevue/autocomplete";
 import FileUpload from "primevue/fileupload";
+import Galleria from "primevue/galleria";
 
 import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice'
@@ -59,6 +60,9 @@ import Badge from "primevue/badge";
 import Skeleton from "primevue/skeleton";
 import SelectButton from "primevue/selectbutton";
 import Carousel from "primevue/carousel";
+import FloatLabel from "primevue/floatlabel";
+
+import Rating from "primevue/rating";
 
 export default  (app: any) =>{
     app.use(PrimeVue, {
@@ -212,4 +216,7 @@ export default  (app: any) =>{
     app.component('SelectButton', SelectButton)
     app.component('Carousel', Carousel)
     app.component('FileUpload', FileUpload)
+    app.component('FloatLabel', FloatLabel)
+    app.component('Galleria', Galleria)
+    app.component('Rating', Rating)
 }

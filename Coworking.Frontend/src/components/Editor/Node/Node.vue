@@ -71,18 +71,18 @@ const iconUrl = computed(()=>{
 </script>
 
 <template>
-  {{iconUrl}}
-  <g @click="select">
+  <g @click="select"
+     >
     <circle :cx="data?.position.x"
             :cy="data?.position.y"
-            r="40"
+            :r="data?.scale || 40"
             opacity="0">    </circle>
     <foreignObject
         :x="data?.position.x"
         :y="data?.position.y"
-        height="40" width="40">  <!--  40 это скейл из модели ноды-->
+        :height="data?.scale || 40" :width="data?.scale || 40">  <!--  40 это скейл из модели ноды-->
 <!--      <component :is="iconUrl" style="height: 100%; width: 100%" />-->
-      <component :is="iconUrl" />
+      <component :is="iconUrl"  :style="`transform: rotate(${data?.rotation}deg)`"  />
     </foreignObject>
 
   </g>

@@ -44,6 +44,7 @@ export const useEditorStore = defineStore('editorStore', {
            this.floors.push(newFloors)
         },
         async add_image_for_floor( data){
+            console.log(2)
             await editorService.addImageFloor(this.selectFloorId, data)
             await this.get_all_floors()
         },
@@ -84,11 +85,13 @@ export const useEditorStore = defineStore('editorStore', {
         // },
         select_node( data){
             this.unselect_home_element()
+            this.selectNode = true
             this.selectedNode = data
         },
         select_home_element(data){
             this.unselect_node()
-            this.selectHomeElement = data
+            this.selectHomeElement = true
+            this.selectedHomeElement = data
             //commit('SAVE_SELECTED_HOME_ELEMENT', data)
         },
         select_home_element_for_searche( data){

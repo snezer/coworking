@@ -54,7 +54,7 @@ const selectRoom = (e) => {
   }
   if (!props.data.newElement) {
 
-    editorStore.selectHomeElement(props.data)
+    editorStore.select_home_element(props.data)
     e.stopPropagation();
   }
 

@@ -8,7 +8,7 @@ import axios from 'axios'
 
 const config = {
     // baseURL: process.env.baseURL || process.env.apiUrl || ""
-    baseURL: 'https://api2.rb.asu.ru'
+    baseURL: 'http://hackathon.rb.asu.ru:4008/'
     // timeout: 60 * 1000, // Timeout
     // withCredentials: true, // Check cross-site Access-Control
 }

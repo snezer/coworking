@@ -41,7 +41,11 @@ const itemsOwner = ref([
 <template>
   <div class="navigation-wrapper">
     <div class="header">
-
+      <div >
+        <div class="boss heading" style="font-size: 1.5rem; font-weight: 500; text-align: left;">
+          ООО "Делу время"
+        </div>
+      </div>
     </div>
     <div class="main">
       <div class="navigation items">
@@ -73,7 +77,7 @@ const itemsOwner = ref([
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 2fr 9fr 1fr;
+  grid-template-rows: 1fr 10fr 1fr;
   background: var(--secondary-light);
 }
 .main{
@@ -99,5 +103,11 @@ navigation.items{
 .item.active{
   font-weight: 600;
   color: var(--text-blue-dark);
+}
+.header{
+  padding: 10px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 </style>
