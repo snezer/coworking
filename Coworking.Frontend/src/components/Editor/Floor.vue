@@ -13,7 +13,7 @@ const filesEdu = ref('')
 
 const editorStore = useEditorStore()
 
-const {floors, selectFloorId} =storeToRefs(editorStore)
+const {floors, selectFloorId, visiblePhotoLevel} =storeToRefs(editorStore)
 
 const handleFilesEducationUpload = async (event) => {
   console.log(1)
@@ -23,12 +23,18 @@ const handleFilesEducationUpload = async (event) => {
     let file = files[i]
     formData.append('files', file)
   }
-  await editorStore.add_image_for_floor(formData)
+  //await editorStore.add_image_for_floor(formData)
+  setTimeout(function (){
+    visiblePhotoLevel.value = true
+  }, 1000)
 }
 
 onMounted(() => {
   editorStore.get_all_floors()
 })
+const handleAddFloor = async () => {
+  await editorStore.add_floor({title: '3', value: 0, coworking: '66481bad730f18df6aac9152', image: ''})
+}
 </script>
 
 <template>
@@ -46,8 +52,10 @@ onMounted(() => {
       </div>
       <div>
         <Button  v-show="showBtnEdit"
-                 @click="editorStore.add_floor({title: '3', value: 0, coworking: '66481bad730f18df6aac9152', image: ''})"
-        > + этаж
+                 @click="handleAddFloor"
+                 style="background: #eec77e;color: #1a1a1a; font-weight: 600; text-align: center;"
+                 label="+ этаж"
+        >
         </Button>
       </div>
       <div>
@@ -61,12 +69,15 @@ onMounted(() => {
             custom-upload
             choose-label="План этажа"
             @uploader="handleFilesEducationUpload"
+            style="background: #eec77e;color: #1a1a1a; font-weight: 600; text-align: center;"
         ></FileUpload>
       </div>
       <div>
         <Button  v-show="showBtnEdit"
                  @click="editorStore.delete_floor(selectFloorId)"
-        > Удалить этаж
+                 style="background: #eec77e;color: #1a1a1a; font-weight: 600; text-align: center;"
+                 label="Удалить этаж"
+        >
         </Button>
       </div>
 

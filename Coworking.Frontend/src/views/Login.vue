@@ -18,7 +18,14 @@ const handleLogin = async () => {
   // if (authService.checkHasIsAuth()) {
   //   await router.push({ path: '/home' })
   // }
-  router.push({ path: '/dashboard/main' })
+  if (login.value == 'user'){
+    router.push({ path: '/usermap' })
+  } else if(login.value == 'admin') {
+    router.push({ path: '/dashboard/editor' })
+  } else {
+    router.push({ path: '/' })
+  }
+
   isLoading.value = false
 }
 </script>

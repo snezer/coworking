@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import PageHeader from "../../components/Page/PageHeader.vue";
+import ChartStat from "../../components/ChartStat.vue";
 </script>
 
 <template>
@@ -14,7 +15,7 @@ import PageHeader from "../../components/Page/PageHeader.vue";
     </template>
     <template #content>
       <div>
-        statistic
+        <ChartStat />
       </div>
     </template>
   </PageHeader>

@@ -26,6 +26,7 @@ export const useEditorStore = defineStore('editorStore', {
             modeEditor: 'draw', //draw - рисование, select  выбор обьекта для редактирования, searche
             drawTypeElement: 'node',
             searchRoom: [],
+            visiblePhotoLevel: false
         }
     },
     actions: {
@@ -39,9 +40,9 @@ export const useEditorStore = defineStore('editorStore', {
             this.selectFloorId = id
             await this.get_all_nodes()
         },
-        add_floor(data){
+        async add_floor(data){
             let newFloors = editorService.addFloors(data)
-           this.floors.push(newFloors)
+           await this.get_all_floors()
         },
         async add_image_for_floor( data){
             console.log(2)
@@ -51,7 +52,7 @@ export const useEditorStore = defineStore('editorStore', {
         async get_all_floors(){
             const allFloors = await editorService.getFloors()
             this.floors = allFloors
-            await this.set_active_floor(allFloors[0]?.id)
+            await this.set_active_floor(this.floors[0]?.id)
         },
         async delete_floor(id){
             await editorService.deleteFloor(this.selectFloorId)
@@ -72,8 +73,16 @@ export const useEditorStore = defineStore('editorStore', {
         },
         async add_node( data) {
             data.floor = this.selectFloorId
-            data.type = this.drawTypeElement
-            await editorService.addNode(data)
+
+            if (this.selectNode){
+                console.log(1111)
+                await editorService.addNode(this.selectedNode)
+            }else{
+                data.type = this.drawTypeElement
+                console.log(2222)
+                await editorService.addNode(data)
+            }
+
             await this.get_all_nodes()
             //commit('SAVE_NEW_NODE', data)
         },

@@ -80,14 +80,34 @@ class EditorApiService extends RestService<any>{
         return await editorService.getById('entity/'+level)
     }
     async  addNode(data) {
-        return await editorService.createExtended({
-            position: {
-                x: data.positionStart.x,
-                y: data.positionStart.y
-            },
-            type: data.type,
-            levelId: data.floor
-        }, 'entity',)
+        console.log(data)
+        if (data.id){
+            return await editorService.updateExtended({
+                position: {
+                    x: data?.position?.x,
+                    y: data?.position?.y
+                },
+                type: data?.type,
+                levelId: data?.floor,
+                cost: data?.cost.toString(),
+                rotation: Number(data?.rotation),
+                scale: Number(data?.scale),
+                description: data?.description
+            }, 'entity/'+data?.id,)
+        }else {
+            return await editorService.createExtended({
+                position: {
+                    x: data?.positionStart?.x,
+                    y: data?.positionStart?.y
+                },
+                type: data?.type,
+                levelId: data?.floor,
+                cost: data?.cost,
+                rotation: data?.rotation,
+                scale: data?.scale
+            }, 'entity',)
+        }
+
     }
     async deleteNode(id){
         return await editorService.delete('entity/'+id)

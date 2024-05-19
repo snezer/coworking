@@ -66,8 +66,15 @@ const itemsOwner = ref([
       </div>
 
     </div>
-    <div class="footer">
-
+    <div class="footer" style="padding-left: 20px">
+      <div class="item">
+        <div class="icon">
+          <i class="pi pi-sign-in"></i>
+        </div>
+        <div class="text">
+          Выход
+        </div>
+      </div>
     </div>
   </div>
 </template>

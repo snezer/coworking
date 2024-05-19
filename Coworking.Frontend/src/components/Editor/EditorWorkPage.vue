@@ -14,6 +14,7 @@ const {
   drawTypeElement,
   selectFloorId,
   floors,
+    visiblePhotoLevel
 } = storeToRefs(editorStore)
 
 const drawHomeElement = computed(()=>{
@@ -139,7 +140,8 @@ import podl from'../../assets/image/podl.png'
     <div style="height: 100%; width: 100%; position: relative" @click="onClick">
       <svg>
         <image
-            style="opacity: 0.5; filter: invert(1)"
+            style="opacity: 0; filter: invert(1)"
+            :style="`opacity: ${visiblePhotoLevel ? .4 : 0};`"
             :href="podl"
             x="50"
             y="-50"

@@ -23,12 +23,17 @@ defineEmits(['openmap'])
       <div class="heading white-text">
         Выбираешь коворкинг?
       </div>
-      <div class="description white-text">
-        <span class="red-text">Хочешь поработать?</span> Мы знаем где можно...
+      <div class="description white-text" style="font-size: 32px;">
+        <div style="display: flex;">
+          <div>
+          Мы знаем где ...
+          </div>
+        </div>
+
       </div>
-      <div class="actons">
-        <Button style="background: white; color: #535bf2;" @click="$emit('openmap')">
-          Выбрать место
+      <div class="actons" style="padding-top: 20px; margin-left: -10px;">
+        <Button text style="font-size: 1.5rem;" class="white-text">
+          Открой двери в Про100R <i class="pi pi-sign-in" style="font-size: 2rem; margin-left: 10px"></i>
         </Button>
       </div>
     </div>
@@ -77,6 +82,7 @@ nav ul{
 nav ul li a{
   text-decoration: none;
   color: white;
+  font-size: 1.5rem;
 }
 .description{
   font-weight: 600;

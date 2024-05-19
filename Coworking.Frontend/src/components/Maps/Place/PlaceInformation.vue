@@ -12,6 +12,7 @@ import avatar2 from '../../../assets/image/Avatar2.png'
 import photo1 from '../../../assets/image/foto1.png'
 import photo2 from '../../../assets/image/foto2.png'
 import photo3 from '../../../assets/image/Foto.png'
+import {useRouter} from "vue-router";
 
 const images = ref([
   {
@@ -63,6 +64,8 @@ const comments = ref([
 
 const rating = ref(4.3)
 defineEmits(['closeInformation'])
+
+const router = useRouter()
 </script>
 
 <template>
@@ -128,7 +131,7 @@ defineEmits(['closeInformation'])
         </div>
       </div>
       <div class="param" style="grid-template-columns: 1fr;">
-        <Button style="height: 36px; width: 245px; background: #eec77e;color: #1a1a1a; font-weight: 600; text-align: center" label="Заказать" />
+        <Button @click="router.push({path: '/login'})" style="height: 36px; width: 245px; background: #eec77e;color: #1a1a1a; font-weight: 600; text-align: center" label="Заказать" />
       </div>
     </div>
     <div class="gallery">

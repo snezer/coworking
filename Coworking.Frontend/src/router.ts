@@ -4,6 +4,7 @@ import Editor from "./views/Owner/Editor.vue";
 import Login from "./views/Login.vue";
 import MainPageOwner from "./views/Owner/MainPageOwner.vue";
 import Dashboard from "./views/Owner/Dashboard.vue";
+import UserMap from "./views/UserMap.vue";
 
 
 const routes = [
@@ -18,6 +19,10 @@ const routes = [
     {
         path: '/login',
         component: Login
+    },
+    {
+        path: '/usermap',
+        component: UserMap
     },
     {
         path: '/dashboard',
